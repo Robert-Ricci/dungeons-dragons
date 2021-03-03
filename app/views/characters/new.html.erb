@@ -1,2 +1,43 @@
-<h1>Characters#new</h1>
-<p>Find me in app/views/characters/new.html.erb</p>
+<% if @character.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
+ 
+    <ul>
+    <% @character.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>Create your Adventurer</h1>
+
+<%= form_for (@character) do |f| %>
+<div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:"form-control", placeholder:"Enter a name" %><br/>
+</div>
+
+
+<div class="form-group">
+    
+    <%= f.label :race_name %><br/>
+    <%= f.select(:race_name, options_for_select([['Dragonborn','Dragonborn'],['Dwarf','Dwarf'],['Human','Human'],['Elf','ELF'],['Half-Elf','Half-Elf'],['Halfling','Halfling']])) %><br/>
+
+</div>
+<br/>
+<br/>
+<div class="form-group">
+    <%= f.label :klass, "Class" %><br/>
+    <%= f.select(:klass, options_for_select([['Fighter','Fighter'],['Ranger','Ranger'],['Rogue','Rogue'],['Wizard','Wizard'],['Bard','Bard'],['Barbarian','Barbarian']])) %><br/>
+</div>
+
+<br/>
+<br/>
+
+<%= f.hidden_field :user_id %><br/>
+
+<div class="actions">
+    <%= f.submit "Create Character", class:"btn btn-primary" %>
+</div>
+<% end %>
