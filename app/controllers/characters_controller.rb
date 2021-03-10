@@ -1,3 +1,4 @@
+
 class CharactersController < ApplicationController
  
  
@@ -6,19 +7,19 @@ class CharactersController < ApplicationController
   end
 
   def create
-    if current_user
+    # if current_user
     @character = Character.create(character_params)
     # binding.pry
     # @character.user_id = current_user.id
 
    
 
-    if @character.save
-      redirect_to user_characters_path(@character)
-    else 
-      render 'new'
-    end
-  end
+    # if @character.save
+    #   redirect_to user_characters_path(@character)
+    # else 
+    #   render 'new'
+    # end
+  # end
   end
 
   def index
