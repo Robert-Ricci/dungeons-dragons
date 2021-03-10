@@ -16,4 +16,9 @@ class RegistrationsController < Devise::RegistrationsController
                                     :password_confirmation, 
                                     :current_password)
     end
+
+    def destroy
+      session.delete :user
+      redirect_to root_path
+    end
   end
