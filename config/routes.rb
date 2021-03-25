@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   resources :characters
 
+  # resources :users do 
+  #   resources :characters
+  # end
+
   root to: 'pages#index'
 
 end
